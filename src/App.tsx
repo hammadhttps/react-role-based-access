@@ -4,6 +4,8 @@ import LoginPage from './pages/loginPage'
 import UnauthorizedPage from './pages/UnauthorizedPage'
 import ProtectedRoute from './context/ProtectedRoute'
 import AdminPage from './pages/AdminPage'
+import UserPage from './pages/UserPage'
+import GuestPage from './pages/GuestPage'
 
 
 const App = () => {
@@ -16,6 +18,17 @@ const App = () => {
           <AdminPage/>
 
         </ProtectedRoute>}></Route>
+         <Route path='/user' element={<ProtectedRoute roles={['admin','user']}>
+          <UserPage/>
+
+        </ProtectedRoute>}></Route>
+
+         <Route path='/guest' element={<ProtectedRoute roles={['admin','user','guest']}>
+          <GuestPage/>
+
+        </ProtectedRoute>}></Route>
+
+        
 
         <Route path='*' element={<Navigate to='/login'/>}/>
       </Routes>
