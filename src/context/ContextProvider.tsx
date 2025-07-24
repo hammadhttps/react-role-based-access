@@ -6,14 +6,14 @@ interface UserContextType
 {
     role:string;
     authenticated:boolean;
-    login:() => void;
+    login:(user:string) => void;
     logout:() => void;
 }
 
     export const userContext=createContext<UserContextType>({
         role:'',
         authenticated:false,
-        login:() => {console.log('login')},
+        login:(user:string) => {console.log('login')},
         logout:() => {console.log('logout')},
     });
 
@@ -21,10 +21,11 @@ interface UserContextType
     const ContextProvider:React.FC<{children:ReactNode}>=({children})=>{
         const [role, setRole] = useState<string>('');
         const [authenticated, setAuthenticated] = useState<boolean>(false);
-        const login = () => {
-            setAuthenticated(true);
-            setRole('admin');
-            };
+         
+        const login = (userRole: string) => {
+    setRole(userRole);
+    setAuthenticated(true);
+  };
 
             const logout = () => {
                 setAuthenticated(false);

@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import { Navigate, Route, Router, Routes } from "react-router-dom";
+import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import ProtectedRoute from "./context/ProtectedRoute";
 import LoginPage from "./pages/loginPage";
 import UnauthorizedPage from "./pages/UnauthorizedPage";

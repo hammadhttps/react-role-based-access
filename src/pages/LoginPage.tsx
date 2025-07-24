@@ -7,7 +7,7 @@ const LoginPage:React.FC = () => {
     const {selectedRole,setSelectedRole}=useState('guest');
 
     const handleLogin=()=>{
-        login();
+        login(selectedRole);
     }
 
     return (
