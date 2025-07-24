@@ -1,9 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext,useState, type ReactNode } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate, Link } from 'react-router-dom';
-import { Shield, User, Users, Globe, LogIn, LogOut, Home, AlertTriangle } from 'lucide-react';
-
 
 interface UserContextType
 {
