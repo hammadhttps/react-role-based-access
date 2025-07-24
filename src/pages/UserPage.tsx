@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { userContext } from '../context/ContextProvider'
-import { Activity, Bell, Home, Settings, Shield, User } from 'lucide-react';
+import { Activity, Bell, Home, Settings, Shield, User, Users } from 'lucide-react';
 import NavigationComponent from './Navigation';
 
 const UserPage:React.FC = () => {

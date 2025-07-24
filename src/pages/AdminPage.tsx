@@ -1,4 +1,4 @@
-import { Globe, Navigation, Shield, User, Users } from "lucide-react";
+import { Globe, Shield, User, Users } from "lucide-react";
 import { useState } from "react";
 import NavigationComponent from "./Navigation";
 

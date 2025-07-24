@@ -1,14 +1,27 @@
 import React, { useContext, useState } from "react"
 import { userContext } from "../context/ContextProvider"
 import { LogIn, Shield, User, Globe } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage:React.FC = () => {
 
     const {login} =useContext(userContext);
     const [selectedRole, setSelectedRole] = useState<string>('guest');
+       const navigate = useNavigate();
     
-    const handleLogin=()=>{
+      const handleLogin = () => {
         login(selectedRole);
+        // Add navigation based on role
+        switch(selectedRole) {
+            case 'admin':
+                navigate('/admin');
+                break;
+            case 'user':
+                navigate('/user');
+                break;
+            default:
+                navigate('/guest');
+        }
     }
 
     return (
