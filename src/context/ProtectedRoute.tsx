@@ -1,18 +1,27 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Navigate } from "react-router-dom";
 import { userContext } from "./ContextProvider"
-import { useContext } from "react"
+import React, { useContext } from "react"
 
-const ProtectedRoute = ({children,roles}) => {
- const {role,authenticated}=useContext(userContext);
- if(!authenticated)
- {
-    return <Navigate to="/login" replace={true} />
- }
- if(!roles.include(role))
- {
-    return <Navigate to="/unauthorized" replace={true} />
- }
- return children;
+interface ProtectedRouteProps
+{
+    children:React.ReactNode;
+    roles:string[]
 }
 
-export default ProtectedRoute
+const ProtectedRoute:React.FC<ProtectedRouteProps>=({children,roles})=>{
+    const {role,authenticated}=useContext(userContext);
+
+    if(!authenticated)
+    {
+        return <Navigate to={'/login'} replace={true}/>
+    }
+    else if(!roles.includes(role))
+    {
+        return <Navigate to={'/unauthorized'} replace={true}/>
+    }
+    return <>{children}</>;
+}
+
+export default ProtectedRoute;
+

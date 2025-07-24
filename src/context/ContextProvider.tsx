@@ -1,20 +1,51 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, type FC } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { createContext,useState, type ReactNode } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate, Link } from 'react-router-dom';
+import { Shield, User, Users, Globe, LogIn, LogOut, Home, AlertTriangle } from 'lucide-react';
 
 
-export const userContext=createContext();
-
-
-const ContextProvider=({children}: { children: React.ReactNode }) => {
-    const role:string='admin';
-    const authenticated:boolean=true;
-    return
-    (
-        <userContext.Provider value={{role,authenticated}}>
-            {children}
-        </userContext.Provider>
-    )
-
+interface UserContextType
+{
+    role:string;
+    authenticated:boolean;
+    login:() => void;
+    logout:() => void;
 }
 
-export default ContextProvider;
+    export const userContext=createContext<UserContextType>({
+        role:'',
+        authenticated:false,
+        login:() => {console.log('login')},
+        logout:() => {console.log('logout')},
+    });
+
+
+    const ContextProvider:React.FC<{children:ReactNode}>=({children})=>{
+        const [role, setRole] = useState<string>('');
+        const [authenticated, setAuthenticated] = useState<boolean>(false);
+        const login = () => {
+            setAuthenticated(true);
+            setRole('admin');
+            };
+
+            const logout = () => {
+                setAuthenticated(false);
+                setRole('');
+                };
+
+                return(
+                    <userContext.Provider value={{role,authenticated,login,logout}}>
+                        {children}
+                    </userContext.Provider>
+
+                );
+
+
+        
+    }
+
+    export default ContextProvider
+
+
+
