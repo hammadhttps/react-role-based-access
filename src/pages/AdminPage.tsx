@@ -1,5 +1,6 @@
 import { Globe, Navigation, Shield, User, Users } from "lucide-react";
 import { useState } from "react";
+import NavigationComponent from "./Navigation";
 
 const AdminPage:React.FC = () => {
 
@@ -19,7 +20,7 @@ const AdminPage:React.FC = () => {
 
    return (
     <div className="min-h-screen bg-gray-50">
-      <Navigation />
+      <NavigationComponent />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 flex items-center">
@@ -31,51 +32,76 @@ const AdminPage:React.FC = () => {
 
         {/* Statistics Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
+          <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-4">
+              <div className="bg-blue-100 p-3 rounded-full">
+                <Users className="h-6 w-6 text-blue-600" />
+              </div>
+              <span className="text-green-600 text-sm font-medium">+5.2%</span>
+            </div>
             <div className="flex items-center justify-between">
               <div>
+                <p className="text-2xl font-bold text-gray-900">{stats.totalUsers}</p>
                 <p className="text-sm text-gray-600">Total Users</p>
-                <p className="text-3xl font-bold text-gray-900">{stats.totalUsers}</p>
               </div>
-              <Users className="h-12 w-12 text-blue-500" />
             </div>
           </div>
           
-          <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
+          <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-4">
+              <div className="bg-green-100 p-3 rounded-full">
+                <User className="h-6 w-6 text-green-600" />
+              </div>
+              <span className="text-green-600 text-sm font-medium">+2.1%</span>
+            </div>
             <div className="flex items-center justify-between">
               <div>
+                <p className="text-2xl font-bold text-gray-900">{stats.activeUsers}</p>
                 <p className="text-sm text-gray-600">Active Users</p>
-                <p className="text-3xl font-bold text-gray-900">{stats.activeUsers}</p>
               </div>
-              <User className="h-12 w-12 text-green-500" />
             </div>
           </div>
           
-          <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-purple-500">
+          <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-4">
+              <div className="bg-purple-100 p-3 rounded-full">
+                <Shield className="h-6 w-6 text-purple-600" />
+              </div>
+              <span className="text-blue-600 text-sm font-medium">Stable</span>
+            </div>
             <div className="flex items-center justify-between">
               <div>
+                <p className="text-2xl font-bold text-gray-900">{stats.adminUsers}</p>
                 <p className="text-sm text-gray-600">Admin Users</p>
-                <p className="text-3xl font-bold text-gray-900">{stats.adminUsers}</p>
               </div>
-              <Shield className="h-12 w-12 text-purple-500" />
             </div>
           </div>
           
-          <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-orange-500">
+          <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-4">
+              <div className="bg-orange-100 p-3 rounded-full">
+                <Globe className="h-6 w-6 text-orange-600" />
+              </div>
+              <span className="text-green-600 text-sm font-medium">+8.3%</span>
+            </div>
             <div className="flex items-center justify-between">
               <div>
+                <p className="text-2xl font-bold text-gray-900">{stats.guestUsers}</p>
                 <p className="text-sm text-gray-600">Guest Users</p>
-                <p className="text-3xl font-bold text-gray-900">{stats.guestUsers}</p>
               </div>
-              <Globe className="h-12 w-12 text-orange-500" />
             </div>
           </div>
         </div>
 
         {/* User Management Table */}
-        <div className="bg-white rounded-xl shadow-md overflow-hidden">
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900">User Management</h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-semibold text-gray-900">User Management</h2>
+              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">
+                Add User
+              </button>
+            </div>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -114,8 +140,8 @@ const AdminPage:React.FC = () => {
                       {user.lastLogin}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button className="text-blue-600 hover:text-blue-900 mr-4">Edit</button>
-                      <button className="text-red-600 hover:text-red-900">Delete</button>
+                      <button className="text-blue-600 hover:text-blue-900 mr-4 font-medium">Edit</button>
+                      <button className="text-red-600 hover:text-red-900 font-medium">Delete</button>
                     </td>
                   </tr>
                 ))}

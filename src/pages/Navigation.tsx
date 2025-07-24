@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { userContext } from "../context/ContextProvider"
-import { Globe, Link, LogOut, Shield, User, Users } from "lucide-react";
+import { Globe, LogOut, Shield, User, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
 
