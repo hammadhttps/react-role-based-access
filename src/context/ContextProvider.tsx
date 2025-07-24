@@ -13,8 +13,8 @@ interface UserContextType
     export const userContext=createContext<UserContextType>({
         role:'',
         authenticated:false,
-        login:(user:string) => {console.log('login')},
-        logout:() => {console.log('logout')},
+        login:(userRole:string) =>{} ,
+        logout:() => {},
     });
 
 

@@ -3,9 +3,10 @@ import { userContext } from "../context/ContextProvider"
 import { LogIn } from "lucide-react";
 
 const LoginPage:React.FC = () => {
-    const {login} =useContext(userContext);
-    const {selectedRole,setSelectedRole}=useState('guest');
 
+    const {login} =useContext(userContext);
+    const [selectedRole, setSelectedRole] = useState<string>('guest');
+    
     const handleLogin=()=>{
         login(selectedRole);
     }
